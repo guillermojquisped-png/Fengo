@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FENGO - Soluciones Visuales Sostenibles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Estilos generales */
         * {
@@ -13,10 +14,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        :root {
+            --primary: #1a5276;
+            --secondary: #58d68d;
+            --accent: #f39c12;
+            --light: #f9f9f9;
+            --dark: #333;
+            --gray: #777;
+        }
+        
         body {
-            color: #333;
+            color: var(--dark);
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: var(--light);
         }
         
         .container {
@@ -25,12 +35,57 @@
             margin: 0 auto;
         }
         
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
         /* Header */
         header {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .header-content {
@@ -45,7 +100,7 @@
         }
         
         .logo span {
-            color: #58d68d;
+            color: var(--secondary);
         }
         
         /* Navegación */
@@ -55,6 +110,7 @@
         }
         
         nav ul li {
+            position: relative;
             margin-left: 1.5rem;
         }
         
@@ -64,10 +120,53 @@
             font-weight: 500;
             transition: color 0.3s;
             padding: 0.5rem 0;
+            display: block;
         }
         
         nav ul li a:hover {
-            color: #58d68d;
+            color: var(--secondary);
+        }
+        
+        /* Submenú */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        
+        .submenu li {
+            margin: 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .submenu li:last-child {
+            border-bottom: none;
+        }
+        
+        .submenu li a {
+            color: var(--dark);
+            padding: 0.8rem 1rem;
+            display: block;
+        }
+        
+        .submenu li a:hover {
+            background-color: #f5f5f5;
+            color: var(--primary);
+        }
+        
+        nav ul li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
         /* Hero Section */
@@ -77,64 +176,27 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
         
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: #58d68d;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
+        /* Quiénes Somos */
+        .about {
+            padding: 5rem 0;
         }
         
-        .btn:hover {
-            background-color: #2ecc71;
-        }
-        
-        /* Secciones */
-        section {
-            padding: 4rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: #1a5276;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: #58d68d;
-            bottom: 0;
-            left: 25%;
-        }
-        
-        /* Sobre Nosotros */
         .about-content {
             display: flex;
             align-items: center;
@@ -145,11 +207,15 @@
             flex: 1;
         }
         
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
         .about-image {
             flex: 1;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .about-image img {
@@ -158,9 +224,85 @@
             display: block;
         }
         
+        /* Indicadores de Calidad */
+        .indicators {
+            background-color: #f1f8ff;
+            padding: 5rem 0;
+        }
+        
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .indicator-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .indicator-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .indicator-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .indicator-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        /* Proceso de Trabajo */
+        .process {
+            padding: 5rem 0;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
         /* Servicios */
         .services {
             background-color: #f1f8ff;
+            padding: 5rem 0;
         }
         
         .services-grid {
@@ -182,11 +324,11 @@
         }
         
         .service-icon {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 1.5rem;
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
         
         .service-content {
@@ -195,53 +337,199 @@
         
         .service-content h3 {
             margin-bottom: 1rem;
-            color: #1a5276;
+            color: var(--primary);
         }
         
-        /* Proyectos */
-        .projects-grid {
+        /* Cifras de la Empresa */
+        .stats {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            padding: 2rem 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+        }
+        
+        /* Sostenibilidad */
+        .sustainability {
+            padding: 5rem 0;
+        }
+        
+        .sustainability-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .sustainability-text {
+            flex: 1;
+        }
+        
+        .sustainability-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .sustainability-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .sustainability-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Equipo */
+        .team {
+            background-color: #f1f8ff;
+            padding: 5rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .member-position {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        /* Testimonios */
+        .testimonials {
+            padding: 5rem 0;
+        }
+        
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
         
-        .project-card {
+        .testimonial-card {
+            background-color: white;
             border-radius: 8px;
-            overflow: hidden;
+            padding: 2rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             position: relative;
         }
         
-        .project-card img {
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-avatar img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
         
-        .project-card:hover img {
-            transform: scale(1.05);
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
         }
         
-        .project-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(26, 82, 118, 0.9);
-            color: white;
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Clientes */
+        .clients {
+            background-color: #f1f8ff;
+            padding: 5rem 0;
+        }
+        
+        .clients-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .client-logo {
+            width: 150px;
+            height: 80px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
         }
         
-        .project-card:hover .project-overlay {
-            transform: translateY(0);
+        .client-logo img {
+            max-width: 100%;
+            max-height: 100%;
         }
         
         /* Contacto */
         .contact {
-            background-color: #f1f8ff;
+            padding: 5rem 0;
         }
         
         .contact-content {
@@ -255,7 +543,7 @@
         
         .contact-info h3 {
             margin-bottom: 1.5rem;
-            color: #1a5276;
+            color: var(--primary);
         }
         
         .contact-item {
@@ -265,7 +553,7 @@
         }
         
         .contact-icon {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             width: 40px;
             height: 40px;
@@ -300,9 +588,52 @@
             resize: vertical;
         }
         
+        /* Comentarios */
+        .comments {
+            background-color: #f1f8ff;
+            padding: 5rem 0;
+        }
+        
+        .comments-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .comments-list {
+            margin-bottom: 3rem;
+        }
+        
+        .comment-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .comment-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .comment-text {
+            line-height: 1.6;
+        }
+        
         /* Footer */
         footer {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 3rem 0 1.5rem;
         }
@@ -320,7 +651,7 @@
         }
         
         .footer-logo span {
-            color: #58d68d;
+            color: var(--secondary);
         }
         
         .footer-links h4, .footer-contact h4 {
@@ -334,7 +665,7 @@
             position: absolute;
             width: 50px;
             height: 2px;
-            background-color: #58d68d;
+            background-color: var(--secondary);
             bottom: 0;
             left: 0;
         }
@@ -354,7 +685,7 @@
         }
         
         .footer-links ul li a:hover {
-            color: #58d68d;
+            color: var(--secondary);
         }
         
         .footer-contact p {
@@ -365,7 +696,31 @@
         
         .footer-contact i {
             margin-right: 0.5rem;
-            color: #58d68d;
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
         }
         
         .footer-bottom {
@@ -384,14 +739,23 @@
             nav ul {
                 margin-top: 1rem;
                 justify-content: center;
+                flex-wrap: wrap;
             }
             
-            .about-content, .contact-content {
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .about-content, .sustainability-content, .contact-content {
                 flex-direction: column;
             }
             
             .hero h2 {
                 font-size: 2rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
             }
         }
     </style>
@@ -407,9 +771,26 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto">Contáctenos</a></li>
+                    <li>
+                        <a href="#diseño">Diseño</a>
+                    </li>
+                    <li>
+                        <a href="#servicios">Servicios</a>
+                        <ul class="submenu">
+                            <li><a href="#packaging">Packaging</a></li>
+                            <li><a href="#bolsas">Bolsas</a></li>
+                            <li><a href="#cajas">Cajas y Bandejas</a></li>
+                            <li><a href="#envolturas">Envolturas para Alimentos</a></li>
+                            <li><a href="#envases">Envases Biodegradables</a></li>
+                            <li><a href="#imprenta">Imprenta</a></li>
+                            <li><a href="#papeleria">Papelería</a></li>
+                            <li><a href="#merchandising">Merchandising</a></li>
+                            <li><a href="#materiales">Materiales</a></li>
+                            <li><a href="#impresiones">Impresiones</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -418,17 +799,17 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h2>Soluciones Visuales Sostenibles</h2>
+            <h2>CREAMOS CONEXIONES HISTORIAS EXPERIENCIAS AUTÉNTICAS</h2>
             <p>FENGO es una compañía peruana referente por brindar soluciones confiables e innovadoras a través de un servicio integral a nivel nacional.</p>
             <a href="#contacto" class="btn">Contáctanos</a>
         </div>
     </section>
 
-    <!-- Sobre Nosotros -->
-    <section id="nosotros">
+    <!-- Quiénes Somos -->
+    <section id="nosotros" class="about">
         <div class="container">
             <div class="section-title">
-                <h2>Nosotros</h2>
+                <h2>SOMOS FENGO</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -443,6 +824,68 @@
         </div>
     </section>
 
+    <!-- Indicadores de Calidad -->
+    <section class="indicators">
+        <div class="container">
+            <div class="section-title">
+                <h2>Indicadores de Calidad</h2>
+            </div>
+            <div class="indicators-grid">
+                <div class="indicator-card">
+                    <div class="indicator-number">95%</div>
+                    <div class="indicator-title">Satisfacción en Packaging</div>
+                </div>
+                <div class="indicator-card">
+                    <div class="indicator-number">92%</div>
+                    <div class="indicator-title">Satisfacción en Diseño</div>
+                </div>
+                <div class="indicator-card">
+                    <div class="indicator-number">98%</div>
+                    <div class="indicator-title">Satisfacción en Imprenta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de Trabajo -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Proceso de Trabajo</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-ear-listen"></i>
+                    </div>
+                    <h3 class="step-title">Escuchar</h3>
+                    <p>Comprendemos tus necesidades y objetivos para crear soluciones a medida.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="step-title">Explorar</h3>
+                    <p>Analizamos tu mercado y oportunidades para maximizar el impacto.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="step-title">Idear</h3>
+                    <p>Desarrollamos conceptos creativos e innovadores para tu marca.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="step-title">Solucionar</h3>
+                    <p>Implementamos las soluciones con la más alta calidad y precisión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Servicios -->
     <section id="servicios" class="services">
         <div class="container">
@@ -452,7 +895,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i>🎨</i>
+                        <i class="fas fa-palette"></i>
                     </div>
                     <div class="service-content">
                         <h3>Diseño Creativo</h3>
@@ -461,7 +904,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i>📦</i>
+                        <i class="fas fa-box-open"></i>
                     </div>
                     <div class="service-content">
                         <h3>Packaging Sostenible</h3>
@@ -470,53 +913,151 @@
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i>🖨️</i>
+                        <i class="fas fa-print"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Impresión de Alto Impacto</h3>
+                        <h3>Imprenta de Alto Impacto</h3>
                         <p>Utilizamos tecnologías de vanguardia y materiales sostenibles para crear piezas visuales que destacan y generan recordación.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i>📊</i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Estrategia Visual</h3>
-                        <p>Analizamos tu mercado y desarrollamos estrategias visuales integrales que potencian tu presencia de marca en todos los puntos de contacto.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proyectos -->
-    <section id="proyectos">
+    <!-- Cifras de la Empresa -->
+    <section class="stats">
         <div class="container">
             <div class="section-title">
-                <h2>Nuestros Proyectos</h2>
+                <h2>Cifras de la Empresa</h2>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1556655852-ef7c4c6cf8e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proyecto 1">
-                    <div class="project-overlay">
-                        <h3>Packaging Retail</h3>
-                        <p>Diseño de empaques sostenibles para cadena de supermercados</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-text">Años de Experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-text">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-text">Proyectos Realizados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sostenibilidad -->
+    <section class="sustainability">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Sostenibilidad</h2>
+            </div>
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <p>En FENGO, estamos comprometidos con el desarrollo sostenible y la protección del medio ambiente. Utilizamos materiales reciclados y biodegradables en todos nuestros productos.</p>
+                    <p>Nuestros procesos de producción están optimizados para minimizar el desperdicio y reducir nuestra huella de carbono, contribuyendo así a un futuro más verde para todos.</p>
+                    <p>Trabajamos con certificaciones de sostenibilidad que garantizan que nuestros productos cumplen con los más altos estándares ambientales y sociales.</p>
+                </div>
+                <div class="sustainability-image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sostenibilidad FENGO">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Equipo</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Miembro del equipo" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Ana Rodríguez</h3>
+                        <p class="member-position">Directora de Diseño</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proyecto 2">
-                    <div class="project-overlay">
-                        <h3>Señalización Corporativa</h3>
-                        <p>Sistema de señalización para empresa logística</p>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Miembro del equipo" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Carlos Mendoza</h3>
+                        <p class="member-position">Gerente de Proyectos</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proyecto 3">
-                    <div class="project-overlay">
-                        <h3>Material POP</h3>
-                        <p>Desarrollo de displays y material punto de venta</p>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Miembro del equipo" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name">Laura Torres</h3>
+                        <p class="member-position">Especialista en Sostenibilidad</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "FENGO transformó completamente la imagen de nuestros productos. Su enfoque en packaging sostenible ha sido un diferenciador clave para nuestra marca."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cliente">
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Gerente de Marketing, Retail Corp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "El equipo de FENGO no solo entregó un producto de alta calidad, sino que también nos asesoró en cómo mejorar nuestra estrategia visual. Un verdadero partner estratégico."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cliente">
+                        </div>
+                        <div class="author-info">
+                            <h4>Roberto Silva</h4>
+                            <p>Director de Trade Marketing, ConsumoMas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clientes Destacados -->
+    <section class="clients">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ellos Nos Eligieron</h2>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <span>Retail Corp</span>
+                </div>
+                <div class="client-logo">
+                    <span>ConsumoMas</span>
+                </div>
+                <div class="client-logo">
+                    <span>LogiPerú</span>
+                </div>
+                <div class="client-logo">
+                    <span>EcoMarket</span>
+                </div>
+                <div class="client-logo">
+                    <span>SuperChain</span>
                 </div>
             </div>
         </div>
@@ -532,32 +1073,40 @@
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <div>
                             <p><strong>Dirección:</strong> Av. Principal 123, Lima, Perú</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
                         <div>
                             <p><strong>Teléfono:</strong> (01) 123-4567</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                         <div>
                             <p><strong>Email:</strong> info@fengo.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
                         <div>
                             <p><strong>Sitio Web:</strong> www.fengo.com</p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" id="nombre" class="form-control" required>
@@ -581,6 +1130,31 @@
         </div>
     </section>
 
+    <!-- Comentarios -->
+    <section class="comments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comentarios y Opiniones</h2>
+            </div>
+            <div class="comments-content">
+                <div class="comments-list" id="commentsList">
+                    <!-- Los comentarios se cargarán aquí dinámicamente -->
+                </div>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="commentName">Tu Nombre</label>
+                        <input type="text" id="commentName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText">Tu Comentario</label>
+                        <textarea id="commentText" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Publicar Comentario</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -588,22 +1162,29 @@
                 <div class="footer-logo">
                     <h3>FEN<span>GO</span></h3>
                     <p>Soluciones visuales sostenibles para empresas comprometidas con el futuro.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#contacto">Contáctenos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#diseño">Diseño</a></li>
+                        <li><a href="#packaging">Packaging</a></li>
+                        <li><a href="#imprenta">Imprenta</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p>📍 Av. Principal 123, Lima, Perú</p>
-                    <p>📞 (01) 123-4567</p>
-                    <p>✉️ info@fengo.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Lima, Perú</p>
+                    <p><i class="fas fa-phone"></i> (01) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@fengo.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -611,5 +1192,52 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Manejo del formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+
+        // Manejo del sistema de comentarios
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+            
+            if (name && text) {
+                addComment(name, text);
+                document.getElementById('commentForm').reset();
+            }
+        });
+
+        function addComment(name, text) {
+            const commentsList = document.getElementById('commentsList');
+            const commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+            
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('es-PE');
+            
+            commentItem.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${name}</span>
+                    <span class="comment-date">${dateStr}</span>
+                </div>
+                <div class="comment-text">${text}</div>
+            `;
+            
+            commentsList.prepend(commentItem);
+        }
+
+        // Agregar algunos comentarios de ejemplo
+        window.addEventListener('DOMContentLoaded', function() {
+            addComment('Carlos López', 'Excelente servicio y atención al cliente. Los productos de FENGO han mejorado significativamente la presentación de nuestros productos.');
+            addComment('Ana Martínez', 'Muy contenta con el trabajo de FENGO. Su enfoque en sostenibilidad es un valor agregado importante para nuestra marca.');
+        });
+    </script>
 </body>
 </html>

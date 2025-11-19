@@ -403,6 +403,74 @@
             display: block;
         }
         
+        /* Lean Startup */
+        .lean-startup {
+            background-color: #f1f8ff;
+            padding: 5rem 0;
+        }
+        
+        .lean-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .lean-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .lean-intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .idea-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .idea-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .idea-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .idea-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .idea-points {
+            list-style-type: none;
+        }
+        
+        .idea-points li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .idea-points li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
         /* Equipo */
         .team {
             background-color: #f1f8ff;
@@ -757,6 +825,10 @@
             .process-steps {
                 flex-direction: column;
             }
+            
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -790,6 +862,7 @@
                         </ul>
                     </li>
                     <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#lean-startup">Lean Startup</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -799,7 +872,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h2>CREAMOS CONEXIONES HISTORIAS EXPERIENCIAS AUTÉNTICAS</h2>
+            <h2>CREAMOS CONEXIONES AUTENTICAS</h2>
             <p>FENGO es una compañía peruana referente por brindar soluciones confiables e innovadoras a través de un servicio integral a nivel nacional.</p>
             <a href="#contacto" class="btn">Contáctanos</a>
         </div>
@@ -961,6 +1034,43 @@
                 </div>
                 <div class="sustainability-image">
                     <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sostenibilidad FENGO">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lean Startup -->
+    <section id="lean-startup" class="lean-startup">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lean Startup</h2>
+            </div>
+            <div class="lean-content">
+                <div class="lean-intro">
+                    <h3>Generación de Ideas</h3>
+                    <p>Aplicamos la metodología de brainstorming para generar nuevas ideas que ayuden a FENGO a crecer o generar ingresos. Esta técnica nos permite explorar múltiples posibilidades y seleccionar las más viables y prometedoras.</p>
+                </div>
+                <div class="ideas-grid">
+                    <div class="idea-card">
+                        <h3 class="idea-title">Kit Emprende Pack</h3>
+                        <p class="idea-description">Servicio Paquete para Nuevos Emprendedores: FENGO podría lanzar un paquete completo para emprendedores que recién inician y quieren verse profesionales desde el primer día.</p>
+                        <ul class="idea-points">
+                            <li>Paquetes económicos con diseño + impresión + packaging</li>
+                            <li>Facilita que pequeños negocios tengan identidad visual rápida</li>
+                            <li>Genera relaciones a largo plazo con nuevos emprendedores</li>
+                            <li>Aumenta ventas porque combina varios servicios en un solo producto</li>
+                        </ul>
+                    </div>
+                    <div class="idea-card">
+                        <h3 class="idea-title">FENGO Academy</h3>
+                        <p class="idea-description">Cursos Digitales de Diseño y Packaging: Aprovechando nuestra experiencia, podríamos crear cursos cortos en video sobre temas relacionados con diseño, packaging y branding.</p>
+                        <ul class="idea-points">
+                            <li>Venta de cursos online sobre diseño, packaging y branding</li>
+                            <li>Ingreso pasivo sin costos de impresión o materiales</li>
+                            <li>Posicionamiento como expertos del sector</li>
+                            <li>Atracción de nuevos clientes gracias al contenido educativo</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1178,6 +1288,7 @@
                         <li><a href="#diseño">Diseño</a></li>
                         <li><a href="#packaging">Packaging</a></li>
                         <li><a href="#imprenta">Imprenta</a></li>
+                        <li><a href="#lean-startup">Lean Startup</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
